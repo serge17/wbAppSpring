@@ -34,7 +34,7 @@ public class DataServiceTest extends AbstractTest {
 	public void testFindAll() {
 		Collection<Data> list = service.findAll();
 		Assert.assertNotNull("failure - expected not null", list);
-		Assert.assertEquals("failure - expected size", 13475, list.size());
+		Assert.assertEquals("failure - expected size", 14569, list.size());
 	}
 
 	@Test
@@ -75,7 +75,7 @@ public class DataServiceTest extends AbstractTest {
 
 		Collection<Data> list = service.findAll();
 
-		Assert.assertEquals("failure - expected size", 13476, list.size());
+		Assert.assertEquals("failure - expected size", 14570, list.size());
 
 	}
 
@@ -105,7 +105,7 @@ public class DataServiceTest extends AbstractTest {
 	@Test
 	public void testUpdate() {
 
-		String id = "US1960";
+		String id = "US2000";
 		Data entity = service.findOne(id);
 
 		Assert.assertNotNull("failure - expected not null", entity);
@@ -153,7 +153,7 @@ public class DataServiceTest extends AbstractTest {
 
 		Collection<Data> list = service.findAll();
 
-		Assert.assertEquals("failure - expected size", 13474, list.size());
+		Assert.assertEquals("failure - expected size", 14569, list.size());
 
 		Data deletedEntity = service.findOne(id);
 

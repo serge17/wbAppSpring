@@ -99,7 +99,7 @@ public class DataControllerTest extends AbstractControllerTest {
 	public void testUpdateData() throws Exception {
 
 		String uri = "/api/data/{id}";
-		String id = "US1960";
+		String id = "US2001";
 		Data data = dataService.findOne(id);
 		String updatedIndicatorValue = data.getIndicatorValue() + " test";
 		data.setIndicatorValue(updatedIndicatorValue);

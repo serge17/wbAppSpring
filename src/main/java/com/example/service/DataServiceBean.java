@@ -11,14 +11,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.Data;
-import com.example.repository.DataRepository;
+import com.example.repository.DataRepositoryMongo;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class DataServiceBean implements DataService {
 
 	@Autowired
-	private DataRepository dataRepository;
+	private DataRepositoryMongo dataRepository;
 
 	@Override
 	public Collection<Data> findAll() {

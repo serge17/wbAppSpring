@@ -1,9 +1,11 @@
 package com.example;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,9 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import com.example.model.Data;
-import com.example.repository.DataRepository;
+import com.example.repository.DataRepositoryMongo;
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -24,7 +27,7 @@ import com.example.repository.DataRepository;
 public class Application implements CommandLineRunner {
 	JSONArray jsonArray;
 	@Autowired
-	private DataRepository repository;
+	private DataRepositoryMongo repository;
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
@@ -60,19 +63,20 @@ public class Application implements CommandLineRunner {
 	}
 
 	private void populate() {
-		try (BufferedReader br = new BufferedReader(new FileReader("data.json"))) {
-			StringBuilder sb = new StringBuilder();
-			String line = br.readLine();
 
-			while (line != null) {
-				sb.append(line);
+		try {
+			URL worldBank = new URL("http://api.worldbank.org/country/all/indicator/SP.POP.GROW?per_page=15000&format=json");
+			URLConnection yc = worldBank.openConnection();
+			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+			String inputLine;
+			StringBuilder sb = new StringBuilder();
+			while ((inputLine = in.readLine()) != null)
+				sb.append(inputLine);
 				sb.append(System.lineSeparator());
-				line = br.readLine();
-			}
+			in.close();
 			String everything = sb.toString();
 			jsonArray = new JSONArray(everything);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
