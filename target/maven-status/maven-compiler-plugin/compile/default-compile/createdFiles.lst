@@ -1,0 +1,6 @@
+com\example\service\DataService.class
+com\example\repository\DataRepository.class
+com\example\Application.class
+com\example\model\Data.class
+com\example\web\api\DataController.class
+com\example\service\DataServiceBean.class

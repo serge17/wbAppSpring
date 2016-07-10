@@ -1,0 +1,6 @@
+com\example\AbstractTest.class
+com\example\web\api\DataControllerTest.class
+com\example\AbstractControllerTest.class
+com\example\ApplicationTests.class
+com\example\service\DataServiceTest.class
+com\example\web\api\DataControllerMocksTest.class

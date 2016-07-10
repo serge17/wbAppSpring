@@ -1,0 +1,2 @@
+--insert into Data values ('US1960', 'testIndicatorid', 'testIndicatorValue', 'US','The United States',10,0,1960);
+--insert into Data values ('ZW2000', 'testIndicatorid', 'testIndicatorValue', 'ZW','Zimbabwe',10,0,2000);
