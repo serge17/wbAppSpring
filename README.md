@@ -19,7 +19,9 @@ DELETE
 /api/data/{id}
 
 post, update, and delete requests expect a json object.
+
 id = countryIso2Code + year (e.g. US1960)
+
 Example of json object to send with post/delete/update requests:
 {
   "indicatorId": "SP.POP.GROW",
